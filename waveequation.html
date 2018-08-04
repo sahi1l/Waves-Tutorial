@@ -1,0 +1,46 @@
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+                      
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="lib/general.js"></script>
+<h1>4b. Wave Equation</h1>
+<p><need>Is this an in-class exercise, or maybe an in-class lecture?</need></p>
+In one dimension, classical waves satisfy the second-order differential equation
+$${\partial^2\psi\over\partial t^2}=c^2{\partial^2\psi\over\partial x^2}$$
+We solve this equation by separation of variables, looking for a separable solution \(\psi(x,t)=X(x)T(t)\).  Substituting this into the equation above gives us
+$$
+\let\om=\omega
+\begin{align}
+X(x)T''(t)&=c^2 X''(x)T(t)\\
+\implies {T''(t)\over T(t)}&=c^2{X''(x)\over X(x)}=-\omega^2\\
+T''(t)&=-\omega^2 T(t) \hbox{ and } X''(x)=-k^2X(x)\quad\hbox{(where $k\equiv\omega/c$)}\\
+\end{align}$$
+<ul class="checklist">
+<li class="simple">Show that the equation \(T''(t)=-\omega^2 T(t)\) has solutions \(\sin\omega t\), \(\cos\om t\), \(e^{i\om t}\), and \(e^{-i\om t}\).
+</ul>
+These are second-order equations, so the general solution is a linear combination of two of the specific solutions.  We have a choice: we can either write the general solution in terms of trigonometric functions
+$$T(t)=A\cos\om t+B\sin\om t \hbox{ and } X(x)=A\cos kx+B\sin kx$$
+or in terms of complex exponentials
+$$T(t)=A e^{i\om t}+Be^{-i\om t} \hbox{ and } X(x)=A e^{ikx}+Be^{-ikx}$$
+(We could also do something like \(Ae^{i\om t}+B\cos\om t\), but that isn't commonly done.)
+
+Hopefully you recognize \(\omega\) and \(k=\om/c\) as the angular frequency and wavenumber that we discussed earlier.  The solution of the wave equation for this particular wavenumber \(k\) is
+$$\psi_k(x,t)=(A e^{ikx}+B e^{-ikx})(C e^{i\om t}+D e^{-i\om t})$$
+We can expand out this polynomial to get
+$$\psi_k(x,t)=A'_k e^{ik(x-ct)}+B'_k e^{-ik(x-ct)}+C'_k e^{ik(x+ct)}+D'_k e^{-ik(x+ct)}$$
+where I've defined new constants and used the fact that \(\om=kc\).  Note that the first two terms have the form $f(x-ct)$: these are waves moving to the right with speed \(c\).  The last two terms have the form $f(x+vt)$, and so are waves moving to the left, also with speed \(c\).
+
+<p>To get the most general solution, we add up \(\psi_k\) for all possible wavenumbers.
+$$\psi(x,t)=\sum_{k=0}^\infty A'_k e^{ik(x-ct)}+\sum_{k=0}^\infty B'_k e^{-ik(x-ct)}+\sum_{k=0}^\infty C'_k e^{ik(x+ct)}+\sum_{k=0}^\infty D'_k e^{-ik(x+ct)}$$
+(These sums will really be integrals, but you get the idea.)  Notice that the first two sums look exactly the same if we swap \(k\) with \(-k\) and define \(A'_{-k}=B'_k\), and similarly for the second two equations:
+$$\psi(x,t)=\sum_{k=0}^\infty A'_k e^{ik(x-ct)}+\sum_{k=0}^{-\infty} A'_k e^{ik(x-ct)}+\sum_{k=0}^\infty C'_k e^{ik(x+ct)}+\sum_{k=0}^{-\infty} C'_k e^{ik(x+ct)}$$
+We can combine the first two sums into a single sum from negative to positive infinity, and similarly for the last two sums:
+$$\psi(x,t)=\sum_{k=-\infty}^\infty A'_k e^{ik(x-ct)}+\sum_{k=-\infty}^\infty C'_k e^{ik(x+ct)}$$
+The first sum is the sum over all waves travelling to the right, and the second, all waves travelling to the left.
+
+From this derivation, we can see the advantage of using complex exponentials instead of trigonometric functions.
+

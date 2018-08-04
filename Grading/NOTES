@@ -1,0 +1,26 @@
+SIMPLE:
+Students visit each site with a link ending in ?code=4429tg4gh80 or whatever.
+When the site is first visited, the server is queried. The server sends back
+* A list of IDs of LIs to checkmark
+* A list of IDs for inputs, along with their contents.
+A red bar appears on top of the screen if the server can't be contacted.
+When a checkmark is registered, send a message to the server with the code and the li name.
+When an input is entered, send a message to the server with the code, the id, and the value
+
+SERVER
+SQL database with tables
+PEOPLE: key (a number, 1-10), first name, last name, code (for ease of changing)
+CHECKMARKS: key, chapter, id, checkedQ
+INPUTS: key, chapter, id, value
+AVAILABLE (a list of all possible ids): chapter, id, "c" or "i"
+
+Commands:
+* init(code,chapter) -> [id,id,...,(id,value),(id,value),...]
+   > Get all checkmarks and inputs for a given chapter and code
+* checkmarks(code,chapter,id,checked=TRUE) -> null
+   > Add a checkmark for a given chapter, code, and id (or remove if checkedQ is FALSE)
+* input(code,chapter,id,value) -> null
+   > Update an input for a given chapter, code, id, and value
+   > Alternatively, could return TRUE or FALSE if it is correct
+* complete(code,chapter) -> boolean
+   > is the page complete?

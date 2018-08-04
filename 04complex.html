@@ -1,0 +1,74 @@
+<html>
+<title>Complex Representation</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="lib/general.js"></script>
+<!---------------------------------------------------------------------------------------------------->
+<script src="lib/complex.js"></script>
+<h1>4. Complex Representation</h1>
+    <h2>Complex Numbers</h2>
+It is useful to use complex numbers to discuss waves.  A complex number is of the form \(z=x+iy\), where \(i=\sqrt{-1}\) is the <i>imaginary number</i>.  We say that \(\operatorname{Re} z=x\) is the real part of \(z\), and \(\operatorname{Im} z=y\) is the imaginary part of \(z\). The <i>complex conjugate</i> of \(z\) is \(z^*=x-iy\).  The absolute value of \(z\) is \(\left|z\right|\ge0\), where
+$$\left|z\right|^2=zz^*=(x+iy)(x-iy)=x^2+y^2$$
+
+<p>If \(z=4-3i\), what is
+<ul class="checklist">
+<li>Re <i>z</i> = <input class="answer show short" id="C1">
+<li>Im <i>z</i> = <input class="answer show short" id="C2">
+<li>\(z^*\) = <input class="answer show short" id="C3">
+<li>\(\left|z\right|\) = <input class="answer show short" id="C4">
+</ul>
+<h2>Euler's formula</h2>
+<p>You may be familiar with <I>Euler's formula</i>, which relates exponential functions to trigonometric functions:
+$$e^{ix}=\cos x+i\sin x$$
+where \(x\) is in radians.  Remember that <i>i</i> is the imaginary number, where \(i^2=-1\).</p>
+<ul class="checklist">
+<li class="simple">Prove that both sides are equal to 1 when x=0.
+<li>Find \(e^{i\pi}\). <input class="answer" id="A1">
+<li>Write \(e^{-ix}\) in terms of trigonometric functions.
+<input class="answer" id="A2">
+<li class="simple">If \(z=e^{ix}\), what is \(z^*\)?  <button class="reveal">Reveal</button><div style="display:inline-block" class="reveal">\(\cos x-i\sin x\) or \(e^{-ix}\)</div>
+<li>What is \(\left|e^{ix}\right|\)? <input class="answer" id="A3">
+<li>What is \(e^{ix}+e^{-ix}\)? <input class="answer" id="A4">
+<li>What is \(e^{ix}-e^{-ix}\)? <input class="answer" id="A5">
+<li class="simple">Write \(\cos^2 x\) in terms of exponentials, expand the polynomial, and rewrite it in terms of the trigonometric function \(\cos 2x\).  Instant trig identities!  Spend 5 minutes on this problem, check with your neighbor if you think you have it right, and then press Reveal.
+<button class="reveal">Reveal</button>
+<div class="reveal">
+$$\begin{align*} 
+\cos^2 x&=\left(\frac12(e^{ix}+e^{-ix})\right)^2\\ 
+&=\frac14(e^{2ix}+2+e^{-2ix})\\ 
+&=\frac12\left[\frac12(e^{2ix}+e^{-2ix})+1\right]\\ 
+&=\frac12[\cos 2x+1]\\ 
+\end{align*}$$
+</div>
+</ul>
+    <need>Talk about the phase of a complex number</need>
+<h2>Complex Numbers and Waves</h2>
+<p>It will occasionally be convenient to describe sinusoidal waves in
+terms of complex exponentials.  (See section 4b, which will probably
+be an in-class lecture.)  This can be a little confusing: what does it
+mean for a water wave to have a complex displacement?  When discussing
+classical waves, it is convenient to consider the <i>real</i> part of
+the exponential to be the actual physical displacement,
+$$\operatorname{Re} e^{i(kx-\omega t)}=\cos (kx-\omega t)$$
+with the imaginary part just along for the ride.  (The displacements
+in quantum waves, on the other hand, are inherently complex.)</p>
+
+<p>
+</p>
+<ul class="checklist">
+    <li class="simple">
+    Write the expression \(A\cos(kx-\omega t+\phi_0)\) so that it is the real function of a function \(f(x)\) which includes a single exponential.
+        <button class="reveal">Reveal</button>
+        <div class="reveal">$$f(x)=Ae^{i(kx-\omega t+\phi_0)}$$</div>
+    </li>
+    <li class="simple">
+        Write \(f(x)\) as the product of three exponentials.
+        <button class="reveal">Reveal</button>
+        <div class="reveal">$$f(x)=Ae^{ikx}e^{-i\omega t}e^{i\phi_0}$$</div>
+    </li>
+    <li>What is \(|f(x)|\)?  <input class="answer" id="B1"></li>
+    </ul>

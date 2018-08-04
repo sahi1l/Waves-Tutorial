@@ -1,0 +1,26 @@
+create table if not exists people (
+key integer PRIMARY KEY, --a number for each person
+first string, --first name
+last string, --last name
+password string --the code they enter to access
+);
+
+create table if not exists checkmarks (
+key integer, --same as above
+chapter integer, --the worksheet numbrer
+id string, --the problem ID, like "A1"
+checked boolean --if it's checked or not
+);
+
+create table if not exists inputs (
+key integer,
+chapter integer,
+id string, 
+value string
+);
+
+create table if not exists available ( --a list of all IDs in a chapter
+chapter integer,
+id string,
+type string --c or i, for checkmarks or inputs
+);

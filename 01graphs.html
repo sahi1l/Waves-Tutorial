@@ -1,0 +1,65 @@
+<html>
+<title>Snapshot and History Graphs</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="js/general.js"></script>
+<script src="js/graphs.js"></script>
+<!---------------------------------------------------------------------------------------------------->
+<h1>Snapshot and History Graphs</h1>
+<h2>What are waves? and wave pulses?</h2>
+<p>A wave is a periodic disturbance that travels through a medium.  Examples include ripples on the surface of water, sound travelling through air, or light travelling through space.  It is the disturbance that travels, not the medium itself: for instance, sound travels at 343m/s when it hits your ear, but if the air were moving at 343m/s you would be blown away!</p>
+<p>The term <i>periodic</i> is important here; a single disturbance which travels through a medium is called a <i>wave pulse</i>.
+</p>
+    <p>
+        As a wave travels through a part of the medium, that part changes periodically, undergoing an <i>oscillation</i>.
+    </p>
+<h2>What is displacement?</h2>
+<p>The displacement is a variable \(y(x,t)\), depending on time and position, which measures the size of the disturbance at any particular point in a wave.  The displacement might be highest at the crest of a wave and lowest at the trough of the wave, for instance.  We will use the letter <i>y</i> to represent generic displacements here, but other variables are used in specific cases.
+    </p>
+    <p>For mechanical waves, such as ripples on water or waves on a string, the displacement is the distance that the medium has moved from its equilibrium position.  In other types of waves, however, the displacement may measure something entirely different.  For instance, in sound waves, the displacement is actually the change in pressure as the wave travels through the medium, where crests are places of higher pressure, and troughs are places of lower pressure.  In electromagnetic waves, the displacement is the strength and direction of the electric and magnetic fields.  In quantum mechanics, we will talk about <i>matter waves</i> where the displacement concerns the probability of finding a particle at a particular spot. </p>
+<h2>Visualizing Pulses</h2>
+<img src="img/graph-animation.gif" style="width:200px;float:right;"></img>
+<p>The easiest way to picture the motion of a pulse or wave is by means of an animated graph, as shown on the right.  Note that this is a graph of the displacement \(y(x,t)\), and not actually a physical picture.  If this is a sound wave, for instance, we are looking at variations in pressure, not oscillation perpendicular to the motion of the pulse.</p>
+<p>When you don't have access to animation, you can graph a pulse by holding either position or time constant, and assigning the other variable to the horizontal axis.</p>
+<br clear="right">
+
+In a <i>snapshot</i> graph, we choose a specific moment in time, and then plot the displacement as a function of position.  The result looks like a single frame of the animation above.  Here are a couple of snaphot graphs corresponding to the animation above; with certain points labelled as <i>y(x,t)</i>.
+<img src="img/graph-snapshot.png" style="height:200px;display:block;"/>
+
+In a <i>history</i> graph, we choose a specific location, and plot how that point is displaced as s a function of time.  This shows how a particular part of the medium behaves as the wave passes through it.  Here are three history graphs from the animation above.  See if you can find the matching points in the snapshot and history graphs; for instance, <i>y</i>(2,0)=3 appears in the t=0 snapshot graph and x=2 history graph.
+<img src="img/graph-history.png" style="height:200px;display:block;"/>
+To my mind, the history graph is a little less intuitive than the snapshot graph.  It can help to imagine a floating ball at the position you want the history of, and watch it move up and down as the pulse passes through it.
+<demo>animation of a pulse travelling through a medium, and a corresponding history graph</need></demo>
+
+<ul class="checklist">
+<li id="A1">Given this snapshot graph, what is the displacement <i>y</i>(<span class="modify"></span>)? <input class="answer show short" id="A1">
+    <div class="canvas"></div>
+
+
+<style>
+    .answers>span.canvas{display:inline-block;border:2px solid;position:relative;}
+    .answers>span>button{position:absolute;top:10;left:80;}
+    .answers>span.correct {border:4px solid green;}
+    .answers>span.wrong {border:2px dotted red;}
+</style>
+    <li id="A2">This is a snapshot graph of a pulse at t=0. <div id="Q" class="canvas"></div>
+        which of the following is the history graph for the point <i>x</i>=<span id="position"></span>, if the pulse is moving to the <span id="direction"></span> with a speed of <span id="speed"></span>?
+        <div class="answers">
+        <span class="canvas"><button which=0>this one</button></span>
+        <span class="canvas"><button which=1>this one</button></span>
+        <span class="canvas"><button which=2>this one</button></span>
+        <span class="canvas"><button which=3>this one</button></span>
+        </div>
+        <button id="tryagain" onclick="A2reset();">Try again.</button>
+    </li>
+<li id="A3">This is the history graph of a pulse at <i>x</i>=<span id="position"></span>, which is moving to the <span id="direction"></span> with a speed of <span id="speed"></span>.
+    <div id="history"></div>
+    This is the snapshot graph for the same pulse at what moment in time?<input class="answer show short" id="A3">
+    
+    <div id="snapshot"></div>
+</ul>
+

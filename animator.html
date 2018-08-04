@@ -1,0 +1,33 @@
+<style>
+#speed {
+border:1px solid;
+height:5px;
+width:80px;
+text-align:left;
+}
+#speed>#value {
+background-color:red;
+height:100%;
+width:40px;
+}
+input#formula {font-size:100%;width:300px;}
+</style>
+<h1>Animator</h1>
+Type in an expression in terms of <i>x</i> and <i>t</i>.
+<p><span style="font-size:125%"><i>f</i>(<i>x</i>,<i>t</i>)=<br><input id="formula"></input> </span>
+<div>
+<button id="run">Run</button>
+<button id="show">Show</button>
+<button id="stop">Stop</button>
+<button id="reset">Reset</button>
+<i>t</i> = <input id="time" style="width:60px;text-align:right;font-size:75%;" value="0">
+<div style="display:inline-block;text-align:center">
+<u>speed</u><br>
+<div id="speed"><div id="value"></div></div>
+<button id="slower">-</button>
+<button id="faster">+</button>
+</div>
+</div>
+</p>
+<div id="result"></div>
+

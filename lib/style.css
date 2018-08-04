@@ -1,0 +1,103 @@
+#chapter {display:none;}
+input.short {
+            width:100px;
+}
+
+need {
+     background-color:yellow;
+     display:inline-block;
+    border:2px solid purple;
+    padding:4px;
+    text-align:center;
+}
+
+div.problem {
+	    border:1px solid;
+	    padding:5px;
+}
+.error {
+       background-color:pink;
+}
+input {
+      font-size:125%;
+      font-family:serif;
+}
+
+ul.checklist li:before {
+//             content:"\2610";
+             content:url("../img/checkoff.png");
+             margin-right:5px;
+}
+ul.checklist li.done:before {
+//             content:"\2611";
+               content:url("../img/checkon.png");
+             margin-right:5px;
+             } 
+ul.checklist {list-style-type:none;}
+ul.checklist>li {color:#888;}
+ul.checklist>li.done + li:not(.done) ~ li:not(.done) {
+             color:#888;background-color:white;}
+ul.checklist>li.done + li:not(.done),
+ul.checklist>li:first-of-type {color:blue;background-color:white;}
+ul.checklist>li.done {color:#202;background-color:white;}
+ul.checklist>li.simple {cursor:pointer;}
+input.answer {
+             border:1px solid black;
+             font-size:12pt;
+margin:5px;
+     visibility:hidden;
+}
+button.reveal {visibility:hidden;}
+/*ul.checklist li.done+li:not(.done)~li:not(.done)>input.answer {display:none;}*/
+input.show,button.show {visibility:visible !important;}
+ul.checklist>li.done+li:not(.done)>input.answer,
+ul.checklist>li.done>input.answer,
+ul.checklist>li.done+li:not(.done)>button.reveal,
+ul.checklist>li.done>button.reveal,
+ul.checklist>li:first-of-type>button.reveal {visibility:inherit;}
+input.correct {background-color:#8f8;}
+input.wrong {background-color:#f88;}
+input.missing {color:red;}
+input.answer {padding-left:4px;}
+
+demo {
+    display:block;
+    font-family:monospace;
+    border:1px solid;
+    max-width:200px;
+    text-align:center;
+    margin:4px;
+    padding:10px;
+    float:right;
+    background-color:antiquewhite;
+}
+
+problem {
+    display:block;
+    border:1px solid;
+    max-width:400px;
+    margin:4px;
+    padding:10px;
+    text-align:center;
+    background-color:lavender;
+    clear:right;
+}
+#header {width:100%;
+    position:fixed;
+    padding;5px;
+    left:0px;
+    top:0px;
+    background-color:darkblue;
+    color:white;
+}
+#complete {font-size:200%;
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    padding;50px;
+    background-color:gold;
+    color:black;
+}
+.complete {background-color:green !important;}
+body {padding-top:10px;}
+.label {font-size:50%;color:purple;}

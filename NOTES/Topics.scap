@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScappleDocument Version="1.1" ID="09DD2899-CC11-4547-B3F1-F30372AB2301">
+    <Notes>
+        <Note ID="1" FontSize="13.0" Position="642.449219,229.421875" Width="104.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>4. exp(i theta)</String>
+            <ConnectedNoteIDs>3, 10, 13</ConnectedNoteIDs>
+            <PointsToNoteIDs>3, 13</PointsToNoteIDs>
+        </Note>
+        <Note ID="3" FontSize="13.0" Position="887.0,587.550781" Width="90.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>10. Fourier Series</String>
+            <ConnectedNoteIDs>1, 4, 11, 14</ConnectedNoteIDs>
+            <PointsToNoteIDs>4</PointsToNoteIDs>
+        </Note>
+        <Note ID="4" FontSize="13.0" Position="858.75,681.582031" Width="112.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>11. Fourier Transform</String>
+            <ConnectedNoteIDs>3</ConnectedNoteIDs>
+        </Note>
+        <Note ID="5" FontSize="13.0" Position="489.0,5.585938" Width="119.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>1. Snapshot and History Graphs</String>
+            <ConnectedNoteIDs>10</ConnectedNoteIDs>
+            <PointsToNoteIDs>10</PointsToNoteIDs>
+        </Note>
+        <Note ID="7" FontSize="13.0" Position="1050.699219,412.519531" Width="111.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>8. Two-slit interference</String>
+            <ConnectedNoteIDs>14</ConnectedNoteIDs>
+        </Note>
+        <Note ID="9" FontSize="13.0" Position="417.101562,71.539062" Width="101.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>2. Nondispersing Pulses</String>
+            <ConnectedNoteIDs>10, 12</ConnectedNoteIDs>
+            <PointsToNoteIDs>10, 12</PointsToNoteIDs>
+        </Note>
+        <Note ID="10" FontSize="13.0" Position="563.234375,135.6875" Width="109.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>3. Sinusoidal waves</String>
+            <ConnectedNoteIDs>1, 5, 9, 12</ConnectedNoteIDs>
+            <PointsToNoteIDs>1, 6, 12</PointsToNoteIDs>
+        </Note>
+        <Note ID="11" FontSize="13.0" Position="914.601562,387.140625" Width="100.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>7. Standing waves</String>
+            <ConnectedNoteIDs>3, 14</ConnectedNoteIDs>
+            <PointsToNoteIDs>3</PointsToNoteIDs>
+        </Note>
+        <Note ID="12" FontSize="13.0" Position="429.574219,313.066406" Width="88.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>5. Dispersion</String>
+            <ConnectedNoteIDs>9-10, 13</ConnectedNoteIDs>
+            <PointsToNoteIDs>13</PointsToNoteIDs>
+        </Note>
+        <Note ID="13" FontSize="13.0" Position="656.347656,488.089844" Width="185.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>9. Transmission through a barrier</String>
+            <ConnectedNoteIDs>1, 12, 14</ConnectedNoteIDs>
+        </Note>
+        <Note ID="14" FontSize="13.0" Position="838.933594,254.050781" Width="100.0">
+            <Appearance>
+                <Alignment>Center</Alignment>
+                <Border Weight="1"></Border>
+            </Appearance>
+            <String>6. Beats and Superposition</String>
+            <ConnectedNoteIDs>3, 7, 11, 13</ConnectedNoteIDs>
+            <PointsToNoteIDs>3, 7, 11, 13</PointsToNoteIDs>
+        </Note>
+    </Notes>
+    <BackgroundShapes></BackgroundShapes>
+    <NoteStyles>
+        <Style Name="Bubble (Blue)" ID="238DD081-E973-47C3-8C40-E7BB64CFB280" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.561855 0.71062 0.779401</BorderColor>
+            <FillColor>0.702319 0.888276 0.974252</FillColor>
+        </Style>
+        <Style Name="Bubble (Green)" ID="DC02B386-0C48-474C-9A92-E3086EFE604E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.572684 0.758969 0.558154</BorderColor>
+            <FillColor>0.715855 0.948712 0.697692</FillColor>
+        </Style>
+        <Style Name="Bubble (Pink)" ID="C1011714-C9D1-42EB-9319-A08A9860EBBD" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.794796 0.560965 0.58607</BorderColor>
+            <FillColor>0.957566 0.766747 0.999616</FillColor>
+        </Style>
+        <Style Name="Bubble (Red)" ID="A7FA8B89-99E5-4127-AEFA-7221FB343E2C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.794796 0.560965 0.58607</BorderColor>
+            <FillColor>0.993495 0.701207 0.732587</FillColor>
+        </Style>
+        <Style Name="Bubble (Yellow)" ID="6DFBC7B5-5E3A-4E94-BDB7-F9FA277BDB4C" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.798177 0.714184 0.522055</BorderColor>
+            <FillColor>0.997722 0.89273 0.652569</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="F894CE45-F29E-4904-8346-AB76DAD6E3E7" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>0.985948 0.0 0.026951</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="FA94B07B-954B-4993-B760-54C33801A3C5" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999767 0.98837 0.949907</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+    </UISettings>
+    <PrintSettings PaperSize="612.000025,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

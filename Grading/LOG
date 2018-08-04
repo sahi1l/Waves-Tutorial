@@ -1,0 +1,78 @@
+
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+<class 'int'><class 'str'><class 'str'><class 'cgi.MiniFieldStorage'>Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+done with checkmarks
+Starting
+Starting
+Starting
+delete record from checkmarks
+insert record into checkmarks
+done with checkmarks
+Starting
+Starting
+22SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)2
+SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+2
+SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+2
+SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+None
+2
+SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+[1, '1', '"A1', 'A2"']
+None
+2
+SELECT id,sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+[1, '1', 'A1', 'A2']
+A2
+2
+SELECT sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+[1, '1', 'A1', 'A2']
+2
+2
+SELECT sum(checked) from checkmarks WHERE key=? and chapter=? and id in (?,?)
+[1, '1', 'A1', 'A2']
+1

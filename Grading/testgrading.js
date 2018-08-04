@@ -1,0 +1,12 @@
+GradeCommand=function(input,process){
+    $.ajax({
+        url:"grading.cgi",
+        dataType:"text",
+        method:"POST",
+        data:input
+        }).done(process);
+};
+GradeCommand({command:"init",code:"A",chapter:1},
+             function(data){$("#response").html(data.replace(/\n/g,"<br>"));
+                 console.log(data);
+});

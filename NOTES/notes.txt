@@ -1,0 +1,21 @@
+The snapshot/history distinction (time and space) reminds me of spacetime which is coming up later.
+
+Use trinket.io for python demos. "import document"
+Consider PHP to handle the ID?
+The index page should update to show which sections have been completed.
+Each student has a UUID which is fed in via GET
+
+Each item should have a checkbox marking if it is complete.  
+
+Some items, they just do and don't have to make a prediction.  Two options:
+1) Let them click on the checkbox themselves. (Easy)
+2) Have the question register a pattern with the animator or whatever. When "Run" is pressed, the animator runs through patterns, and if it matches one (or matches the first unmatched one?) then send back "yay" or whatever. (This is slicker, but probably more work than I want to do.)
+
+When each item is created, it registers with another object which keeps track of completeness.  Completeness
+1) reads data from a server to see what is already complete.
+2) 
+
+How am I going to handle checking if their answers are correct?  Two options:
+1) Place an entry box next to the question. They type in the answer and press return.  A script then looks at the pattern of their response and shows green or red, and checks the box.  Save the entry (if correct) on the server for future reference.  (I might like this a little better.)
+
+TODO: Replace tiny checkboxes with larger images and brighter checkmarks.

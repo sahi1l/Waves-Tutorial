@@ -1,0 +1,34 @@
+<html>
+<title>Standing Waves</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="lib/general.js"></script>
+<!---------------------------------------------------------------------------------------------------->
+<h1>Standing Waves</h1>
+<h2>Pulse Reflection at Boundaries</h2>
+    When a wave pulse hits the boundary of its medium, part of it will be reflected back into the medium.  How it is reflected depends on the type of the boundary.  <ul>
+    <img style="float:right;width:100px;" src="http://www.acs.psu.edu/drussell/Demos/reflect/hard.gif">
+    <li>At a <i>hard</i> boundary, the medium is constrained and not allowed to move.  When a pulse meets a hard boundary, the reflected pulse flips upside-down. Examples of hard boundaries are strings that are tied down at their ends, the open end of a pipe when talking about pressure waves (because the atmospheric pressure remains constant), and places where light moves to a higher index of refraction (and thus must slow down).  If a sinusoidal wave hits a hard boundary, the reflected wave is 180&deg; out of phase with the original.
+    </li>
+    <img style="float:right;width:100px;" src="http://www.acs.psu.edu/drussell/Demos/reflect/soft.gif">
+    <li>At a <i>soft</i> boundary, the medium is free to move.  When a pulse meets a soft boundary, it is not flipped upside-down when it is reflected.  Examples of soft boundaries are the closed end of a pipe for pressure waves (because the pressure can increase at the closed end), and when light moves to a lower index of refraction and must speed up.
+    </li>
+    </ul>
+<h2>Waves at Boundaries</h2>
+    <p><demo>A picture of two waves and two types of boundaries. Show the reflected and original waves plus the sum.</demo>
+        One can go through the mathematics of adding the regular wave and its reflection at a boundary, but the net result is that a sinusoidal wave <b>must be zero at a hard boundary</b> and <b>must be maximal</b> at a soft boundary.</p>
+<demo>A picture of a wave that doesn't fit between two barriers, the resulting reflected waves, and how they all cancel out</demo>
+    <p>Now suppose a wave is trapped between <i>two hard barriers</i>.
+    We know that the wave must be zero at both barriers, but for most waves this would be impossible.  If you try to get a wave going, the original and reflected waves become a jumble and end up just cancelling each other out.  However, if you choose a wave with just the right wavelength so that it fits in between the walls and can be zero at both ends, then the original and the reflections build upon each other, and you get a <i>standing wave</i>.
+    </p>
+        <demo>Try different mode numbers and different boundaries, see the wave.</demo>
+    
+    
+<h2>Standing Wave Modes</h2>
+Mode, nodes and antinodes
+
+<demo>This program does animation and handles reflection too. Try different functions and/or wavelengths and see what happens</demo>

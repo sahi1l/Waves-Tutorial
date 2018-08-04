@@ -1,0 +1,11 @@
+body {
+margin-right:350px;
+}
+#animator {
+border:1px solid;
+position:absolute;
+right:0px;
+  top:0px;
+  background-color:white;
+  padding:5px;
+}

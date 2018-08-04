@@ -1,0 +1,43 @@
+<html>
+<title>Pulses</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="js/general.js"></script>
+<!---------------------------------------------------------------------------------------------------->
+<script src="js/animator.js"></script>
+<link rel="stylesheet" href="lib/animator.css">
+    <div id="complete">Completed! <A HREF="index.html">Return to the scoreboard.</A></div>
+    <div id="header"><span id="name"></span> </div>
+<h1>Pulses</h1><div id="chapter">2</div>
+<script src="js/pulses.js"></script>
+<p>In many parts of physics, we concern ourselves with functions of one variable, like f(x) or v(t).  Waves vary over time and space, however, so we need to think about functions of at least two variables, such as f(x,t).  The easiest way to visualize these is with an animation, which is what the <B>Animator</B> over there will do.</p>
+<ul class="checklist">
+<!--Idea for grading: have a box next to those questions where the students enter their answers and press "Check"-->
+<!--Idea: for some of these where it describes the desired graph, put in an animated gif instead.-->
+<li id="X0" class="simple">Type the expression <tt>x*t</tt> into the animator.  Discuss with your partner what you expect to see.  Then press "Run".
+<li id="A1">Find an expression which starts with a line whose slope, starting at 1, slowly decreases with time.<input class="answer" id="A1" ></li>
+<li id="X1" class="simple">Try the expression <tt>sin(pi*x*t)</tt>.  Again, predict what will happen before you press "Run".
+<li id="X2" class="simple">Try the expression <tt>exp(-x^2)</tt>.  This is a basic Gaussian, centered at zero.  (If you press "Run", nothing changes.  Why not?)
+<li id="A2">Find an expression which draws a Gaussian, centered at x=1, which doesn't move.<input class="answer" id="A2"></li>
+<li id="A3">Find an expression which draws a Gaussian, and then causes that Gaussian to move to the right over time, without changing shape.  Spend five minutes experimenting with this before giving up and pressing the "Reveal" button below.
+
+<button class="reveal">Hint</button>
+<div class="reveal" style="font-style:italic">
+If you replace the <tt>x</tt> in a function <tt>f(x)</tt> with <tt>x-vt</tt>, where <tt>v</tt> is some number (the velocity), the original graph will move to the right or left without changing shape.
+</div>
+
+<li id="A4">Write an expression that creates a Gaussian which moves to the right at 5m/s.
+    <input class="answer" id="A4"></li>
+<li id="A5">Write an expression that creates a parabola that moves to the LEFT at 3m/s.
+    <input class="answer" id="A5"></li>
+<li id="A6">Write an expression that will create a sinusoidal wave that travels to the left.
+    <input class="answer" id="A6"></li>
+</ul>
+</div>
+<div id="animator">
+<!--Make this a floating div, but not an iframe-->
+</div>

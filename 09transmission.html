@@ -1,0 +1,51 @@
+<html>
+<title>Transmission</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="lib/style.css">
+<script src="lib/jquery.js"></script>
+<script src="lib/math.js"></script>
+<script src="lib/plotly.min.js"></script>
+<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="lib/general.js"></script>
+<!---------------------------------------------------------------------------------------------------->
+<h1>Wave Transmission</h1>
+<demo>Frequency of a wave stays the same at the boundary, but the wavelength changes</demo>
+    <p>When a wave travels from one medium to another, the displacement \(y(x,t)\) <i>must remain continuous</i>, and as a consequence of this, its frequency remains constant.  (See the figure.)  The point on the boundary belongs to both media at the same time, and so that point must oscillate at the frequency of the first medium AND the frequency of the second medium, and that only works if the frequency is the same on both sides.  However, the wavelength may be different in the two media: if the speed changes, for instance, then the wavelength <i>must</i> change in a nondispersive wave (i.e. where \(\lambda=vf\)).
+        <problem>MC: Which of these is correct picture of a wave slowing down?</problem>
+    Because the frequency must remain constant, a shorthand has developed for waves.  Instead of writing $$y(x,t)=Ae^{ikx}e^{i\omega t}e^{i\phi_0}$$
+        we assume the time dependence \(e^{i\omega t}\) and don't write it.  Also, we fold the constant phase \(e^{i\phi_0}\) into the amplitude A, turning A into a complex number.  Thus, if we write $$Ae^{ikx}$$ 
+        it is equivalent to the expression above.  (We'll use the convention that positive \(k\) means waves moving to the right, and negative \(k\) means waves moving to the left.
+<h2>Nondispersive Wave</h2>
+    Suppose a wave \(Ae^{ikx}\) hits the boundary (at \(x=0\)) with a new medium where the wavenumber would be \(k'\).  Some of the wave will be reflected by the boundary, and have the form \(Re^{-ikx}\) (negative because the reflected wave moves to the left. Note: any phase change due to the type of boundary is absorbed in the coefficient \(R\)).  The rest of the wave will be transmitted into the boundary, \(Te^{ik'x}\).  Can we predict the amplitudes of the reflected and transmitted waves?  Yes: if we use the two rules mentioned above:
+    <ol>
+    <li>The wave is always continuous, even at boundaries.</li>
+    <li>The wave's derivative is usually continuous.</li>
+    </ol>
+    So the displacement on the left of the boundary is the superposition of the original and reflected waves, $$y_L(x)=Ae^{ikx}+Re^{-ikx}$$
+    and the displacement to the right is $$y_R(x)=Te^{ik'x}$$
+    The rules above say that
+    $$y_L(0)=y_R(0) \qquad\hbox{and}\qquad y'_L(0)=y'_R(0)$$
+    or
+    $$A+R=T \qquad\hbox{and}\qquad Aik-Rik=Tik' \implies A-R=T{k'\over k}$$
+    <problem>Make sure you understand where these came from!</problem>
+    These are two equations so we can solve for two unknowns; the variable <i>A</i> can be thought of as a given.
+    <ul class="checklist">
+    <li class="simple">Solve these two equations for \(R\) and \(T\)
+        <button class="reveal">Reveal</button>
+        <div class="reveal">
+        $$R=A{k-k'\over k+k'} \qquad\hbox{and}\qquad T=A{2k\over k+k'}$$
+            </div>
+        </li></ul>
+        R and T are amplitudes, but energy is associated with the intensity.  Thus, the fraction of the energy of the initial wave that is reflected backward is \(r=\left|{R\over A}\right|^2\), and similarly for the fraction of transmitted energy.
+    <ul class="checklist">
+                    <li>An electromagnetic wave passes from air (where its speed is \(v=c\)) into water (where \(v={3\over4}c\)).  Calculate the fraction of the wave that is transmitted into the water.
+                        <br><i>t</i> =<input class="answer show" id="A1">
+            </li>
+
+        </ul>
+    <h2>Finite Barrier</h2>
+<need>Talk about how, with some waves, the wavenumber can become imaginary or complex.  In that case, the equation is the same, but the wave in the new medium isn't oscillatory, it's an exponential decay.  Mention skin depth.</need>
+<h2>Finite Square Well</h2>
+<problem>Find correct frequency so everything lines up.  Fill in the first couple frequencies.</problem>
+    
+

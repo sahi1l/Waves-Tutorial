@@ -1,0 +1,4 @@
+Function that checks for any li's that aren't done. If there are zero, then mark the page as complete.
+$("ul.checklist>li:not(.done)").length
+
+Function and button that saves progress of the page to a server.
