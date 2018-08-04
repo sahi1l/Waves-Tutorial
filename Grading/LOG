@@ -138,3 +138,135 @@ cmd=init
 A
 B
 Done
+['command', 'chapter', 'code']
+cmd=complete
+A
+B
+Done
+['chapter', 'code', 'command']
+cmd=init
+A
+B
+Done
+['code', 'command']
+cmd=name
+A
+B
+Done
+['chapter', 'command', 'code']
+cmd=complete
+A
+True
+B
+Done
+['code', 'command']
+cmd=name
+A
+B
+Done
+['chapter', 'command', 'code']
+cmd=init
+A
+X1
+X2
+X0
+A1
+A2
+A4
+A5
+A6
+A3
+A1	(1-t)*x
+A2	exp(-(x-1)^2)
+A4	exp(-(5t-x)^2)
+A5	(x+3t)^2
+A6	4*cos(x+t)
+
+B
+Done
+['code', 'command', 'chapter']
+cmd=complete
+A
+B
+Done
+['command', 'code']
+cmd=name
+A
+B
+Done
+['code', 'chapter', 'command']
+cmd=init
+A
+B
+Done
+['code', 'command', 'chapter']
+cmd=complete
+A
+True
+B
+Done
+['code', 'command', 'chapter']
+cmd=complete
+A
+True
+B
+Done
+['chapter', 'code', 'command']
+cmd=complete
+A
+True
+B
+Done
+['chapter', 'command', 'code']
+cmd=complete
+A
+True
+B
+Done
+['command', 'code']
+cmd=name
+A
+B
+Done
+['code', 'chapter', 'command']
+cmd=complete
+A
+True
+B
+Done
+['code', 'chapter', 'command']
+cmd=complete
+A
+True
+B
+Done
+['code', 'command', 'chapter']
+cmd=complete
+A
+True
+B
+Done
+['command', 'code', 'chapter']
+cmd=complete
+A
+True
+B
+Done
+['command', 'chapter', 'code']
+cmd=complete
+A
+True
+B
+Done
+['code', 'command', 'chapter']
+cmd=complete
+A
+True
+B
+Done
+['command', 'code', 'chapter']
+cmd=complete
+A
+True
+B
+Done

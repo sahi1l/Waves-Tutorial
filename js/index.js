@@ -10,7 +10,7 @@ var Header = function(data){
 }
 var GradeCommand = function(input, process) {
     $.ajax({
-        url:"../Grading/grading.cgi",
+        url:"Grading/grading.cgi",
         dataType:"text",
         method:"POST",
         data:input
