@@ -7,100 +7,110 @@ cgitb.enable(format="text")
 form=cgi.FieldStorage()
 log=open("LOG","a")
 def LOG(val):
-    pass
-    #log.write(str(val)+"\n")
+    #pass
+    log.write(str(val)+"\n")
 db=sqlite3.connect("database.sqlite")
 C=db.cursor()
-def inithtml():
-    try: 
-        inithtml.done
-    except AttributeError:
-        print("Content-type:text/plain\n")
-        inithtml.done=1
-def prnterror():
-    print("Status: 400 Bad request")
+LOG(form.keys())
+toprint=""
+def PRINT(x):
+    global toprint
+    toprint+=x
+def STATUS(x):
+    global status
+    status=x
 
-def prnt(*args,**kwargs):
-    inithtml()
-    print(*args,**kwargs)
-    
-def lookforprams(prams):
-    for i in prams:
-        if not i in form:
-            return False
-    return True
-if lookforprams(["code","chapter","command"]):
-    #inithtml()
-    code=form["code"].value
-    key=list(C.execute("SELECT key FROM people WHERE password=?",(code,)))
-    if not len(key):
-        prnterror()
-       #print("Who are you?") #FIX: Must throw error
-        exit
-    key=key[0][0]
-    chapter=form["chapter"].value
-    cmd=form["command"].value
-    
-    if cmd=="init":
-        for line in C.execute("SELECT id FROM checkmarks where key=? and chapter=? and checked=1",(key,chapter)):
-            prnt(line[0])
-        for line in C.execute("SELECT id,value FROM inputs where key=? and chapter=?",(key,chapter)):
-            prnt(line[0],line[1],sep='\t')
-            
-    elif cmd=="check" and "id" in form:
-        id=form["id"].value
-        val=True
-        if "checked" in form:
-            val=form["checked"].value
+status="200 OK" #the status to print
+
+def get(key,default=""):
+    """return a cgi value, or default if undefined"""
+    if key in form:
+        return form[key].value
+    else:
+        return default
+
+
+def Init():
+    """Send a list of all checkmarks and values for a given student"""
+    for line in C.execute("SELECT id FROM checkmarks where key=? and chapter=? and checked=1",(key,chapter)):
+        PRINT(str(line[0])+'\n')
+    for line in C.execute("SELECT id,value FROM inputs where key=? and chapter=?",(key,chapter)):
+        PRINT(str(line[0])+'\t'+str(line[1])+'\n')
+    LOG(toprint)
+    STATUS("200 OK")
+def AddCheckmark():
+    """Add a checkmark to the database"""
+    if id!="":        
+        val=get("checked",True)
         C.execute("DELETE FROM checkmarks WHERE key=? AND chapter=? AND id=?",(key,chapter,id));
         C.execute("INSERT INTO checkmarks (key,chapter,id,checked) VALUES (?,?,?,?)",(key,chapter,id,val))
         db.commit()
-        prnt("OK") #replace with status?
-        
-    elif cmd=="input" and lookforprams(["id","value"]):
-        id=form["id"].value
-        val=form["value"].value
+        STATUS("204 OK")
+     
+def AddInput():
+    if(id!=""):
+        val=get("val","")
         C.execute("DELETE FROM inputs WHERE key=? AND chapter=? AND id=?",(key,chapter,id));
         C.execute("INSERT INTO inputs (key,chapter,id,value) VALUES (?,?,?,?)",(key,chapter,id,val))
         db.commit()
-        prnt("OK") #replace with status?
-        
-    elif cmd=="complete":
-        #Only checkmarks are checked
-        complete=True
-        mychecks=[x[0] for x in C.execute("SELECT id from checkmarks where key=? and chapter=? and checked=?",(key,chapter,True))] #should True be 1?
-        for check in C.execute("SELECT id from available where chapter=? and type='c'",(chapter,)):
-            if not check[0] in mychecks:
-                complete=False
-                break
-        prnt(complete); #
-        
-    elif cmd=="checked" and "id" in form:
-        ids=form["id"].value.split(",")
-        nids=len(ids)
-        LOG(nids)
-        sql='SELECT sum(checked) from checkmarks WHERE key=? and chapter=? and id in (%s)' % ",".join(nids*"?") 
-        LOG(sql)
-        LOG([key,chapter]+ids)
-        nchecked=C.execute(sql, [key,chapter]+ids).fetchone()
-        LOG(nchecked[0])
-        prnt ((nids==nchecked[0]))
-            
-elif "command" in form and form["command"].value == "name":
-        inithtml();
-        if "code" in form:
-            code=form["code"].value
-            name=list(C.execute("SELECT first,last from people WHERE password=?",(code,)));
-            if(len(name)>0):
-                prnt(" ".join(name[0]));
-            else:
-                prnterror()
-                print("Unknown") #Status error
-        else:
-            prnterror()
-            print("Unknown") #Status error
-else:    
-    prnterror()
+        STATUS("204 OK")
 
+def IsComplete():
+    """Check if all checkmarks that should be checked, are"""
+    complete=True
+    mychecks=[x[0] for x in C.execute("SELECT id from checkmarks where key=? and chapter=? and checked=?",(key,chapter,True))] #should True be 1?
+    for check in C.execute("SELECT id from available where chapter=? and type='c'",(chapter,)):
+        if not check[0] in mychecks:
+            complete=False
+            break
+    PRINT(str(complete))
+    LOG(str(complete))
+    STATUS("200 OK")
+
+def IsChecked():
+    ids=getid().split(",")
+    nids=len(ids)
+    if(nids>0):
+        sql='SELECT sum(checked) from checkmarks WHERE key=? and chapter=? and id in (%s)' % ",".join(nids*"?") 
+        nchecked=C.execute(sql, [key,chapter]+ids).fetchone()
+#        LOG(nchecked[0])
+        PRINT(nids==nchecked[0])
+        STATUS("200 OK")
+      
+#======================================================================
+id=get("id")
+if(id==""):
+    STATUS("400 No question specified.")
+chapter=get("chapter")
+cmd=get("command")
+LOG("cmd="+cmd)
+code=get("code"); #code for a particular person
+key=list(C.execute("SELECT key FROM people WHERE password=?",(code,)))
+if not len(key):
+    STATUS("400 Student not found.")
+    cmd="error"
+else:
+    key=key[0][0]
+    
+LOG("A")
+if cmd=="init": Init()           
+elif cmd=="check": AddCheckmark()
+elif cmd=="input": AddInput()
+elif cmd=="complete": IsComplete()
+elif cmd=="checked" and "id" in form: IsChecked()
+elif cmd=="name":
+        name=list(C.execute("SELECT first,last from people WHERE password=?",(code,)));
+        if(len(name)>0):
+            PRINT(" ".join(name[0]));
+        else:
+            STATUS("400 Name not found.")
+elif cmd!="error":   
+    STATUS("400 Command "+cmd+" was not understood")
+LOG("B")   
+print("Status:",status)
+print("Content-type:text/plain\n")
+print(toprint)
+LOG("Done")
+    
 #TO FIX: Randomized problems need to have their own entry, maybe in input.  They need to be able to check if they have been completed; if so, they take on the value in input.  If not, they give a new randomized set of variables.
         

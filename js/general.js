@@ -25,6 +25,7 @@ var CheckComplete = function(chapter) {
 };
 
 var isComplete = function(result){
+    console.log("isComplete",result.trim())
     if(result.trim()=="True"){
         $("#complete").show();
         $("#header").addClass("complete");
@@ -35,6 +36,7 @@ var isComplete = function(result){
 }
 GradeInit=function(data){
     //This is the process function for the command init
+    console.log("GradeInit begins")
     console.log(data);
     var D=data.trim().split("\n")
     D.forEach(function(element){
@@ -107,8 +109,9 @@ function generalinit(){
     $("input.answer").attr("placeholder","Type your answer here.");
     $("input.answer.short").attr("placeholder","Answer");
     $("input.answer").keyup(answerkey);
+    $("#complete").hide()
     GradeCommand({command:"name",code:getcode()},Header);
-    GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
+   console.log("Initing"); GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
     CheckComplete();
 }
 
