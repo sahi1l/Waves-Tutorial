@@ -1,4 +1,8 @@
 function lpr(data){console.log(data);CheckComplete();} //debug function
+function InsertHeader(){
+    $("body").prepend('<div id="header"><span id="name"></span> <div id="complete">Completed! <A HREF="index.html">Return to the scoreboard.</A></div></div>');
+    $("#complete").hide();
+}
 var Header = function(data){
     //The process function for the command name
     data=data.trim()
@@ -37,13 +41,15 @@ var isComplete = function(result){
 GradeInit=function(data){
     //This is the process function for the command init
     console.log("GradeInit begins")
-    console.log(data);
+    console.log(JSON.stringify(data));
+    if(data.trim()==""){return;}
     var D=data.trim().split("\n")
     D.forEach(function(element){
-        L=element.split("\t")
-        if(L.length==1){//checkbox
+        L=element.split("\t");
+        if(L.length==1 && L[0]!=""){//checkbox
+            console.log("GradeInit: L[0]=",L[0]);
             $("li#"+L[0]).addClass("done")
-        } else {
+        } else if (L[0]!=""){
             $("input#"+L[0]).val(L[1])
         }
     });
@@ -102,7 +108,20 @@ function toggleCheck(w,val){
         w.removeClass("done"); GradeCommand({command:"check",code:getcode(),chapter:getchapter(),id:id,checked:0},lpr);
     }
 }
+function addQuery(){
+    console.log($("a"))
+    $("a").each(function(idx,element){
+        console.log(element);
+        var href=element.href;
+        console.log(href);
+        if(href.indexOf("?")<0){
+            element.href=href+"?"+getcode()
+        }
+    });
+}
+
 function generalinit(){
+    InsertHeader();
     $("button.reveal +div").hide();
     $("button.reveal").click(reveal);
     $("li.simple").click(function(e){toggleCheck(e.target);});
@@ -111,6 +130,7 @@ function generalinit(){
     $("input.answer").keyup(answerkey);
     $("#complete").hide()
     GradeCommand({command:"name",code:getcode()},Header);
+    addQuery();
    console.log("Initing"); GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
     CheckComplete();
 }
