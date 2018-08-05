@@ -5,12 +5,13 @@
 <script src="lib/jquery.js"></script>
 <script src="lib/math.js"></script>
 <script src="lib/plotly.min.js"></script>
+<script src="lib/seedrandom.min.js"></script>
 <script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="lib/general.js"></script>
+<script src="js/general.js"></script>
 <!---------------------------------------------------------------------------------------------------->
-<script src="lib/sinusoidal.js"></script>
+<script src="js/sinusoidal.js"></script>
 
-<h1>Sinusoidal Waves</h1>
+<h1>Sinusoidal Waves</h1><div id="chapter">3</div>
     <h2>Definition</h2>
 <UL>
 A <i>sinusoidal wave</i> is a wave with a shape like a sine or a cosine.
@@ -26,7 +27,7 @@ The last four values are related by the wave equation
 $$v={\lambda\over T}=\lambda f$$
 
 <ul class="checklist">
-Given this animation,
+<li id="A1" class="random">Given this animation,
 <br>
 <div>
 <div id="A1animation" style="vertical-align:middle;
@@ -37,11 +38,14 @@ display:inline-block;width:500px;height:300px"></div>
 </div>
 </div>
 <br>find the following values. (Note: they are all integers.)
-<li>&lambda;=<input class="answer show short" id="A1lam"></li>
+<ul>
+    <li>&lambda;=<input class="answer show short" id="A1lam"></li>
 <li><i>T</i>=<input class="answer show short" id="A1T"></li>
             <li><i>v</i>=<input class="answer show short" id="A1v"></li>
             <li><i>A</i>=<input class="answer show short" id="A1A"></li>
 </ul>
+    </li>
+    </ul>
 </div>
 <h2>Overall Phase</h2>
 <demo>Phase of a wave</demo>
