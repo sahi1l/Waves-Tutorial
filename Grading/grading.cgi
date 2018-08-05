@@ -1,17 +1,29 @@
 #!/opt/local/bin/python3
-#!/usr/bin/env python3
 import sqlite3
 import cgi
 import cgitb
+import sys
+from io import BytesIO
 cgitb.enable(format="text")
 form=cgi.FieldStorage()
+if len(sys.argv)>1:
+    print(sys.argv[1])
+    urlencode_data=sys.argv[1].encode('utf-8')
+    urlencode_environ={
+        'CONTENT_LENGTH': str(len(urlencode_data)),
+        'CONTENT_TYPE': 'application/x-www-form-urlencoded',
+        'QUERY_STRING': '',
+        'REQUEST_METHOD': 'POST',
+    }
+    data=BytesIO(urlencode_data)
+    data.seek(0)
+    form=cgi.FieldStorage(fp=data,environ=urlencode_environ)
 log=open("LOG","a")
 def LOG(val):
     #pass
     log.write(str(val)+"\n")
 db=sqlite3.connect("database.sqlite")
 C=db.cursor()
-LOG(form.keys())
 toprint=""
 def PRINT(x):
     global toprint
@@ -36,7 +48,6 @@ def Init():
         PRINT(str(line[0])+'\n')
     for line in C.execute("SELECT id,value FROM inputs where key=? and chapter=?",(key,chapter)):
         PRINT(str(line[0])+'\t'+str(line[1])+'\n')
-    LOG(toprint)
     STATUS("200 OK")
 def AddCheckmark():
     """Add a checkmark to the database"""
@@ -64,7 +75,6 @@ def IsComplete():
             complete=False
             break
     PRINT(str(complete))
-    LOG(str(complete))
     STATUS("200 OK")
 
 def IsChecked():
@@ -73,7 +83,6 @@ def IsChecked():
     if(nids>0):
         sql='SELECT sum(checked) from checkmarks WHERE key=? and chapter=? and id in (%s)' % ",".join(nids*"?") 
         nchecked=C.execute(sql, [key,chapter]+ids).fetchone()
-#        LOG(nchecked[0])
         PRINT(nids==nchecked[0])
         STATUS("200 OK")
       
@@ -83,7 +92,6 @@ if(id==""):
     STATUS("400 No question specified.")
 chapter=get("chapter")
 cmd=get("command")
-LOG("cmd="+cmd)
 code=get("code"); #code for a particular person
 key=list(C.execute("SELECT key FROM people WHERE password=?",(code,)))
 if not len(key):
@@ -92,7 +100,6 @@ if not len(key):
 else:
     key=key[0][0]
     
-LOG("A")
 if cmd=="init": Init()           
 elif cmd=="check": AddCheckmark()
 elif cmd=="input": AddInput()
@@ -102,15 +109,14 @@ elif cmd=="name":
         name=list(C.execute("SELECT first,last from people WHERE password=?",(code,)));
         if(len(name)>0):
             PRINT(" ".join(name[0]));
+            STATUS("200 OK")
         else:
             STATUS("400 Name not found.")
 elif cmd!="error":   
     STATUS("400 Command "+cmd+" was not understood")
-LOG("B")   
 print("Status:",status)
 print("Content-type:text/plain\n")
 print(toprint)
-LOG("Done")
     
 #TO FIX: Randomized problems need to have their own entry, maybe in input.  They need to be able to check if they have been completed; if so, they take on the value in input.  If not, they give a new randomized set of variables.
         
