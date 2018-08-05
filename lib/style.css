@@ -89,6 +89,7 @@ problem {
     top:0px;
     background-color:darkblue;
     color:white;
+    z-index:1;
 }
 #complete {font-size:18px;
     display:inline-block;
@@ -100,5 +101,5 @@ problem {
     color:black;
 }
 .complete {background-color:green !important;}
-body {padding-top:15px;}
+body {margin-top:40px;}
 .label {font-size:50%;color:purple;}

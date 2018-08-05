@@ -1,17 +1,23 @@
-ranint=function(){return math.floor(math.random(1,5));}
+ranint=function(start,stop){return Math.floor(Math.random()*(stop-start))+start;}
+function SetUpRandom(){
+    //This will call all functions that require a random number, so it is seeded properly.
+    console.log("SetUpRandom");
+    sininit();
+}
+
 RandomSinusoidal=function(){
-    this.A=ranint();
-    this.v=ranint();
-    this.T=ranint();
+    Math.seedrandom($("#A1seed")[0].value)
+    this.A=ranint(1,5);
+    this.v=ranint(1,5);
+    this.T=ranint(1,5);
     this.lam=this.v*this.T;
     this.ymax=math.ceil(this.A*1.5);
-    ran=math.random(1,3)
+    ran=ranint(1,3);
     this.xmax=math.ceil(this.lam*ran);
     cxmax=this.lam*math.ceil(ran);
     this.t=0;
     this.dt=0.1;
     this.dx=0.01;
-    console.log(this.lam,this.xmax);
     xvalues=[];
     yvalues=[];
     this.Tmax=math.ceil(this.T/this.dt);
@@ -84,7 +90,7 @@ sininit=function(){
     $("#A1step").click(randomsin.Step);
     randomsin.Play();
 };
-$(sininit);
+
 
 //TODO: 
 //1. Add play/pause and step buttons

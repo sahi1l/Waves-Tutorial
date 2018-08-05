@@ -38,21 +38,24 @@ var isComplete = function(result){
         $("#header").removeClass("complete");
     }
 }
+
 GradeInit=function(data){
     //This is the process function for the command init
     console.log("GradeInit begins")
     console.log(JSON.stringify(data));
-    if(data.trim()==""){return;}
+    if(data.trim()!=""){
     var D=data.trim().split("\n")
     D.forEach(function(element){
         L=element.split("\t");
         if(L.length==1 && L[0]!=""){//checkbox
-            console.log("GradeInit: L[0]=",L[0]);
             $("li#"+L[0]).addClass("done")
         } else if (L[0]!=""){
             $("input#"+L[0]).val(L[1])
         }
     });
+    }
+    console.log("OK checking now");
+    if(SetUpRandom){SetUpRandom();} //This function sets up any random-seeded commands.
 }
 var getchapter=function(){return $("#chapter").text();}
 var getcode=function(){return window.location.search.slice(1);}
@@ -70,9 +73,8 @@ var answercheck=function(id){
     console.log("answercheck");
     var widget=$("input#"+id);
     var val=widget.val()
-    if (!(id in checking)){
-        widget.addClass("missing");
-    } else if(checking[id](val)){
+    if (!(id in checking)){widget.addClass("missing");}
+    else if(checking[id](val)){
         widget.removeClass("wrong");
         widget.addClass("correct");
         var w=widget.parent()[0];
@@ -118,10 +120,20 @@ function addQuery(){
             element.href=href+"?"+getcode()
         }
     });
+};
+
+function addSeeds(){
+    //add a random seed input to every li marked with class="random"
+    var d=new Date();
+    var seed=Math.floor(d.getTime()).toString();
+    $("li.random").each(function(idx,element){
+                        $(element).prepend('<input type="hidden" class="seed" id="'+element.id+'seed" value="'+seed+'">');
+});
 }
 
 function generalinit(){
     InsertHeader();
+    addSeeds();
     $("button.reveal +div").hide();
     $("button.reveal").click(reveal);
     $("li.simple").click(function(e){toggleCheck(e.target);});
@@ -131,8 +143,10 @@ function generalinit(){
     $("#complete").hide()
     GradeCommand({command:"name",code:getcode()},Header);
     addQuery();
-   console.log("Initing"); GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
+   console.log("Initing"); 
+    GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
     CheckComplete();
+    //FIX: Possibly call init after this?
 }
 
 $(generalinit)
