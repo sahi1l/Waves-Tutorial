@@ -91,6 +91,5 @@ sininit=function(){
     randomsin.Play();
 };
 
-
-//TODO: 
-//1. Add play/pause and step buttons
+ 
+//TODO: [x] Add play/pause and step buttons

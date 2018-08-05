@@ -146,7 +146,7 @@ function generalinit(){
    console.log("Initing"); 
     GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
     CheckComplete();
-    //FIX: Possibly call init after this?
+    //MAYBE: Possibly call init after this?
 }
 
 $(generalinit)

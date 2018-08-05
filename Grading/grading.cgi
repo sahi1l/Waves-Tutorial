@@ -18,10 +18,17 @@ if len(sys.argv)>1:
     data=BytesIO(urlencode_data)
     data.seek(0)
     form=cgi.FieldStorage(fp=data,environ=urlencode_environ)
-log=open("LOG","a")
+try:
+    log=open("LOG","a")
+except PermissionError:
+    pass #Can't really send a message to the user so skip it
+
 def LOG(val):
     #pass
-    log.write(str(val)+"\n")
+    try:
+        log.write(str(val)+"\n")
+    except NameError:
+        pass
 db=sqlite3.connect("database.sqlite")
 C=db.cursor()
 toprint=""
@@ -118,5 +125,5 @@ print("Status:",status)
 print("Content-type:text/plain\n")
 print(toprint)
     
-#TO FIX: Randomized problems need to have their own entry, maybe in input.  They need to be able to check if they have been completed; if so, they take on the value in input.  If not, they give a new randomized set of variables.
+#TODO: Randomized problems need to have their own entry, maybe in input.  They need to be able to check if they have been completed; if so, they take on the value in input.  If not, they give a new randomized set of variables.
         
