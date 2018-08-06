@@ -15,7 +15,8 @@
     <h2>Definition</h2>
 <UL>
 A <i>sinusoidal wave</i> is a wave with a shape like a sine or a cosine.
-<need>Talk about sinusoidal waves here.</need>
+<!--WRITE: Talk about sinusoidal waves here.-->
+
 
 <LI><B>Amplitude</B> \(A\) is the maximum displacement of the wave from equilibrium.  The energy in a wave is proportional to its amplitude squared, which is known as the wave's <B>intensity</B> \(I=A^2\).
 <LI><B>Speed</B> <I>v</I> is the speed of the disturbance through the medium
@@ -48,12 +49,14 @@ display:inline-block;width:500px;height:300px"></div>
     </ul>
 </div>
 <h2>Overall Phase</h2>
+<!--TODO: A figure of the overall phase on different parts of a cosine.-->
 <demo>Phase of a wave</demo>
 <p>The <i>phase</i> \(\phi\) of a sinusoidal wave is the part of the cycle the wave is in at a particular location and moment in time.  Phase is measured in radians; one full wavelength is \(2\pi\) radians across.  If we define waves in terms of cosines, then a phase of \(\phi=0\) corresponds to a crest, \(\phi=\pi\) corresponds to a trough, and so forth.  Note that \(\phi=2\pi\) is the same as \(\phi=0\), and so forth.  The displacement of a sinusoidal wave depends simply on its phase, as
     $$y(x,t)=A\cos\phi(x,t)$$
     (Some texts will use sine instead of cosine; the difference is largely irrelevant.)</p>
 <p>The phase of a sinusoidal wave depends on the position and time.  In the wave snapshot shown to the right, the phase increases as the position \(x\) increases.  If we move a distance \(\lambda\) to the right, the phase changes by \(2\pi\); if we move a distance \(\lambda/2\) to the right, the phase changes by \(2\pi/2\).  To calculate the phase change, then, we can divide the distance moved by the wavelength of the wave, and then multiply by \(2\pi\):
     $$\phi(x,t=0)=2\pi{x\over\lambda} \quad \hbox{(when $t=0$)}$$
+    <!--TODO: Animation showing how the phase at a particular point changes as the wave moves to the right and to the left-->
     <demo>Phase changing as the wave moves</demo>
     If the wave starts to move to the right (in the positive <i>x</i> direction), notice how the phase at any one particular location <i>decreases</i>.  If we wait a time \(T\), the phase will decrease by \(2\pi\), and in general the phase changes by \(-2\pi(t/T)\).  However, if the wave is moving to the left, the phase increases at the same rate.  Thus we can write the phase as
     $$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi {t\over T} \quad \hbox{wave moving in the $\pm x$ direction}$$
@@ -76,8 +79,10 @@ where \(t_0\) is a time where the displacement at \(x=0\) is at its maximum posi
 <h2>Angular frequency and wavenumber</h2>
 <p>There are two other measures of waves you may be less familiar with.
 <UL>
+<!--TODO: Animation of angular frequency: wave takes 1s to travel π radians-->
+<!--TODO: Figure showing of wavenumber-->
+    <demo>demonstration of angular frequency</demo>
 <LI>The <B>angular frequency</B> <I>&omega;=2&pi;f</I> of a wave is the number of radians that pass by a certain spot per unit of time.
-<demo>demonstration of angular frequency</demo>
 <LI><B>Wavenumber</B> <I>k=2&pi;/&lambda;</I> is the number of radians that fit within a given amount of distance.  It is the spatial version of the angular frequency: a higher wavenumber means more waves can fit into 
 </UL>
 These variables allow us to write the phase in a more compact form.
