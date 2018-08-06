@@ -75,9 +75,10 @@ def AddInput():
 
 def IsComplete():
     """Check if all checkmarks that should be checked, are"""
-    complete=True
+    complete=False
     mychecks=[x[0] for x in C.execute("SELECT id from checkmarks where key=? and chapter=? and checked=?",(key,chapter,True))] #should True be 1?
     for check in C.execute("SELECT id from available where chapter=? and type='c'",(chapter,)):
+        complete=True #Return false if there are no questions marked available
         if not check[0] in mychecks:
             complete=False
             break
@@ -92,7 +93,15 @@ def IsChecked():
         nchecked=C.execute(sql, [key,chapter]+ids).fetchone()
         PRINT(nids==nchecked[0])
         STATUS("200 OK")
-      
+
+def Name():
+    name=list(C.execute("SELECT first,last from people WHERE password=?",(code,)));
+    if(len(name)>0):
+        PRINT(" ".join(name[0]));
+        STATUS("200 OK")
+    else:
+        STATUS("400 Name not found.")
+
 #======================================================================
 id=get("id")
 if(id==""):
@@ -112,13 +121,7 @@ elif cmd=="check": AddCheckmark()
 elif cmd=="input": AddInput()
 elif cmd=="complete": IsComplete()
 elif cmd=="checked" and "id" in form: IsChecked()
-elif cmd=="name":
-        name=list(C.execute("SELECT first,last from people WHERE password=?",(code,)));
-        if(len(name)>0):
-            PRINT(" ".join(name[0]));
-            STATUS("200 OK")
-        else:
-            STATUS("400 Name not found.")
+elif cmd=="name": Name()
 elif cmd!="error":   
     STATUS("400 Command "+cmd+" was not understood")
 print("Status:",status)
