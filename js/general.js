@@ -55,7 +55,7 @@ GradeInit=function(data){
     });
     }
     console.log("OK checking now");
-    if(SetUpRandom){SetUpRandom();} //This function sets up any random-seeded commands.
+    if(typeof(SetUpRandom) !== "undefined"){SetUpRandom();} //This function sets up any random-seeded commands.
 }
 var getchapter=function(){return $("#chapter").text();}
 var getcode=function(){return window.location.search.slice(1);}
