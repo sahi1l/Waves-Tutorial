@@ -10,11 +10,48 @@
 <!---------------------------------------------------------------------------------------------------->
 <H1>Fourier Series</H1><div id="chapter">10</div>
     <h2>Standing waves</h2>
-    <need>In Section ___ we found the "standing waves" for a given 1D box, but those aren't the only possible waves that can exist inside the box.  Linear combinations of these are possible as well: you can have multiple frequencies in the box at the same time.  This is what happens on a guitar string.  When you pluck a guitar string, you create waves of all frequencies, only the resonant frequencies remain, and the resulting sound is the linear superposition of all of them. </need>
-    <need>Look for some basic Fourier series introductions for inspiration</need>
-<UL>
-<LI>start with 7-LED digital displays maybe?
-<LI>Taylor series
-<LI>Change coefficients of signs, see what happens
-<LI>Standing waves
-</UL>
+    <img src="img/standingwaves-summary.png" style="float:left" class="rightimage">
+    <p>After Section ___, you may be under the impression that these are the only possible standing waves on a string.  However, linear combinations of these are possible as well: you can have multiple frequencies in the box at the same time.  This is what happens on a guitar string.  When you pluck a guitar string, you create waves of all frequencies, only the resonant frequencies remain, and the resulting sound is the linear superposition of all of them. </p>
+    <p>The most general standing wave can thus be written</p>
+    $$\begin{align}
+    y(x,t)&=a_1\sin k_1(x-vt)+a_2\sin 2k_1(x-vt)+a_3\sin 3k_1(x-vt)+\dots\\
+    &= \sum_{n=1}^{\infty}a_n\sin\left[ nk_1(x-vt)\right]\\
+    \end{align}$$
+    <demo>Different shapes that can be made by sums of sine waves</demo>
+    <p>This is more powerful than it appears, because it turns out that, with an appropriate choice of the coefficients \(a_n\), we can create <i>any</i> continuous (and some non-continuous) function which is zero at the two endpoints with a sum of sine functions.  This is called a <i>Fourier sine series</i>.   </p>
+    <p>Let's be a little more specific:</p>
+    <p><b>Theorem:</b> A function \(f(x)\) defined over the domain \(0\le x\le L\), with \(f(0)=f(L)=0\), can be written as
+    $$f(x)=\sum_{n=1}^{\infty}a_n \sin {n\pi\over L}x$$
+        for some choice of coefficiences \(a_n\).
+    </p>
+    <p> We won't try to prove this (ask a math professor!), but we can settle for finding the coefficients. To do this, we use the following useful property of sine functions:
+    $$\frac{1}{\pi}\int_{0}^L \sin{m\pi x\over L}\sin{n\pi x\over L}\,dx=\delta_{mn}=\begin{cases}1,&m=n\\ 0,&m\ne n\\\end{cases}$$
+        <p>(We'll let you prove this later, but for now let's take it as given.  The symbol \(\delta_{mn}\) is called the <i>Kronecker delta function</i>.)
+    This property is called <i>orthogonality</i>, because it is reminiscent of taking the dot product of unit vectors, where \(\sin{n\pi x\over L}\) play the role of unit vectors, and \(\frac1{\pi}\int_0^L\cdots\,dx\) plays the role of the dot product.</p>
+    <p>
+       To find the coefficient \(a_m\) in the sum of sines, we take the "dot product" of \(f(x)\) with the "unit vector" \(\sin{m\pi x\over L}\):
+        $$\begin{align}
+        &\frac1\pi\int_0^L f(x)\sin{m\pi x\over L}\,dx\\
+        &=\frac1\pi\int_0^L \sum_{n=1}^{\infty}a_n\sin{n\pi x\over L}\sin{m\pi x\over L}\,dx\\
+        &=\sum_{n=1}^{\infty}a_n\frac1\pi\int_0^L \sin{n\pi x\over L}\sin{m\pi x\over L}\,dx\\
+        &=\sum_{n=1}^{\infty}a_n\delta_{mn}\\
+        \end{align}$$
+        The Kronecker delta is going to be zero except when <i>n=m</i>, so all of the terms of the sum will be zero except one, and so the coefficients of the sine series for function \(f(x)\) are
+        $$a_m=\frac1\pi\int_0^L f(x)\sin{m\pi x\over L}$$
+        for all <i>m</i>.
+    </p>
+    A couple things to note:
+    <ul>
+        <!--PICTURE: How we extend the limited function to the periodic function-->
+        <li>Because we started by thinking about standing waves, we defined \(f(x)\) as a function that fits in the domain \(0\le x\le L\), but typically \(f(x)\) is thought of as a <i>periodic function</i> with period \(L\).   </li>
+        <li>Here we talked about functions that vary in space, but we can also find Fourier series in time, where we replace angular frequency and time for wavenumber and position.  </li>
+        <li>We can loosen up our restriction \(f(0)=f(L)=0\) by introducing cosines into our sum as well as sines: we can write <i>any</i> continuous function on the interval \(0\le x\le L\), or any periodic function with period L, as
+        $$f(x)=a_0+\sum_{n=1}^{\infty} a_n\cos {n\pi x\over L}+\sum_{n=1}^{\infty} b_n\sin {n\pi x\over L}$$
+            
+        </li>
+        </ul>
+    <need>Talk about the triangular wave, and what happens when you pluck a guitar string. What it means that the wave has multiple frequencies at once.</need>
+<!-- TODO: simulator that lets me type in coefficient values for the first N coefficients, and plots the result.-->
+    <!--TODO: Matching problem: match graph to set of coefficients-->
+    <problem>Match the following set of coefficients to the shape that they produce.</problem>
+    <problem>What happens if you alternate the signs in a series?</problem>

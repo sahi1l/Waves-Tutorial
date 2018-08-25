@@ -1,100 +1,114 @@
 <html>
-<title>Sinusoidal Waves</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="lib/style.css">
-<script src="lib/jquery.js"></script>
-<script src="lib/math.js"></script>
-<script src="lib/plotly.min.js"></script>
-<script src="lib/seedrandom.min.js"></script>
-<script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src="js/general.js"></script>
-<!---------------------------------------------------------------------------------------------------->
-<script src="js/sinusoidal.js"></script>
+    <title>Sinusoidal Waves</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/style.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/math.js"></script>
+    <script src="lib/raphael.js"></script>
+    <script src="lib/plotly.min.js"></script>
+    <script src="lib/seedrandom.min.js"></script>
+    <script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="js/general.js"></script>
+    <!---------------------------------------------------------------------------------------------------->
+    <script src="js/sinusoidal.js"></script>
 
-<h1>Sinusoidal Waves</h1><div id="chapter">3</div>
+    <h1>Sinusoidal Waves</h1><div id="chapter">3</div>
     <h2>Definition</h2>
-<UL>
-A <i>sinusoidal wave</i> is a wave with a shape like a sine or a cosine.
-<!--WRITE: Talk about sinusoidal waves here.-->
+    <!--IDEA: Might be better if this were an animated gif-->
+    <div id="basicsinewave" style="width:200px;height:200px;float:right;">x</div>
+    A <i>sinusoidal wave</i> is a wave with a shape like a sine or a cosine.
+    <UL>
+        <LI><B>Amplitude</B> \(A\) is the maximum displacement of the wave from equilibrium.  The energy in a wave is proportional to its amplitude squared, which is known as the wave's <B>intensity</B> \(I=A^2\).</LI>
+        <LI><B>Speed</B> <I>v</I> is the speed of the disturbance through the medium.</LI>
+        <LI><B>Wavelength</B> \(\lambda\) is the distance from one point on a wave to the identical point in the next cycle.</LI>
+        <LI><B>Period</B> <I>T</I> is the time it takes for one wavelength to pass by a point in space. Alternatively, it is the time it takes for a part of the medium to undergo one complete oscillation.</LI>
+        <LI><B>Frequency</B> (<I>f</I> or <I>&nu;</I>) is the number of wavelengths that pass by a point in space in a given amount of time, or the number of oscillations a part of the medium undergoes in a given amount of time. The reciprocal of the period.</LI>
+    </UL>
+    The last four values are related by the wave equation
+    $$v={\lambda\over T}=\lambda f$$
 
+    <ul class="checklist">
+        <li id="A1" class="random">Given this animation,
+            <br>
+            <!--TODO: When all four are answered correctly, then checkmark the overall one.
+I'm also getting "Error: no question specified"
+Maybe don't have the individuals in a list, but across.
+-->
 
-<LI><B>Amplitude</B> \(A\) is the maximum displacement of the wave from equilibrium.  The energy in a wave is proportional to its amplitude squared, which is known as the wave's <B>intensity</B> \(I=A^2\).
-<LI><B>Speed</B> <I>v</I> is the speed of the disturbance through the medium
-<LI><B>Wavelength</B> \(\lambda\) is the distance from one point on a wave to the identical point in the next cycle.
-<LI><B>Period</B> <I>T</I> is the time it takes for one wavelength to pass by a point in space. Alternatively, it is the time it takes for a part of the medium to undergo one complete oscillation.
-<LI><B>Frequency</B> (<I>f</I> or <I>&nu;</I>) is the number of wavelengths that pass by a point in space in a given amount of time, or the number of oscillations a part of the medium undergoes in a given amount of time. The reciprocal of the period.
-</UL>
-The last four values are related by the wave equation
-$$v={\lambda\over T}=\lambda f$$
-
-<ul class="checklist">
-<li id="A1" class="random">Given this animation,
-<br>
-<div>
-<div id="A1animation" style="vertical-align:middle;
-display:inline-block;width:500px;height:300px"></div>
-<div style="display:inline-block;vertical-align:middle"><span style="font-size:200%" id="A1animationTime">t=0</span>
-<br><button id="A1play">Play</button>
-<button id="A1step">Step</button>
-</div>
-</div>
-<br>find the following values. (Note: they are all integers.)
-<ul>
-    <li>&lambda;=<input class="answer show short" id="A1lam"></li>
-<li><i>T</i>=<input class="answer show short" id="A1T"></li>
-            <li><i>v</i>=<input class="answer show short" id="A1v"></li>
-            <li><i>A</i>=<input class="answer show short" id="A1A"></li>
-</ul>
-    </li>
+            <div>
+                <div id="A1animation" 
+                     style="vertical-align:middle;
+                            display:inline-block;width:500px;height:300px"></div>
+                <div style="display:inline-block;vertical-align:middle">
+                    <span style="font-size:200%" id="A1animationTime">t=0</span>
+                    <br><button id="A1play">Play</button>
+                    <button id="A1step">Step</button>
+                </div>
+            </div>
+            <br>find the following values. (Note: they are all integers.)
+            <ul>
+                <li>&lambda;=<input class="answer show short" id="A1lam"></li>
+                <li><i>T</i>=<input class="answer show short" id="A1T"></li>
+                <li><i>v</i>=<input class="answer show short" id="A1v"></li>
+                <li><i>A</i>=<input class="answer show short" id="A1A"></li>
+            </ul>
+        </li>
     </ul>
-</div>
+    </div>
 <h2>Overall Phase</h2>
-<!--TODO: A figure of the overall phase on different parts of a cosine.-->
-<demo>Phase of a wave</demo>
+<div class="rightimage"><img src="img/03/phase.png">
+    The phases of a cosine wave.</div>
 <p>The <i>phase</i> \(\phi\) of a sinusoidal wave is the part of the cycle the wave is in at a particular location and moment in time.  Phase is measured in radians; one full wavelength is \(2\pi\) radians across.  If we define waves in terms of cosines, then a phase of \(\phi=0\) corresponds to a crest, \(\phi=\pi\) corresponds to a trough, and so forth.  Note that \(\phi=2\pi\) is the same as \(\phi=0\), and so forth.  The displacement of a sinusoidal wave depends simply on its phase, as
     $$y(x,t)=A\cos\phi(x,t)$$
     (Some texts will use sine instead of cosine; the difference is largely irrelevant.)</p>
 <p>The phase of a sinusoidal wave depends on the position and time.  In the wave snapshot shown to the right, the phase increases as the position \(x\) increases.  If we move a distance \(\lambda\) to the right, the phase changes by \(2\pi\); if we move a distance \(\lambda/2\) to the right, the phase changes by \(2\pi/2\).  To calculate the phase change, then, we can divide the distance moved by the wavelength of the wave, and then multiply by \(2\pi\):
     $$\phi(x,t=0)=2\pi{x\over\lambda} \quad \hbox{(when $t=0$)}$$
-    <!--TODO: Animation showing how the phase at a particular point changes as the wave moves to the right and to the left-->
-    <demo>Phase changing as the wave moves</demo>
-    If the wave starts to move to the right (in the positive <i>x</i> direction), notice how the phase at any one particular location <i>decreases</i>.  If we wait a time \(T\), the phase will decrease by \(2\pi\), and in general the phase changes by \(-2\pi(t/T)\).  However, if the wave is moving to the left, the phase increases at the same rate.  Thus we can write the phase as
-    $$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi {t\over T} \quad \hbox{wave moving in the $\pm x$ direction}$$
-    This formula assumes that the phase at \(x=0,\,t=0\) is zero.  In practice, if the initial phase is \(\phi_0\), then
-    $$\boxed{\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi {t\over T}+\phi_0}$$</div>
-    making the general formula for the displacement
-    $$y(x,t)=A\cos\left(2\pi{x\over\lambda}\mp 2\pi{t\over T}+\phi_0\right)$$
-    </p>
-    <problem>Calculate phase of a randomly chosen wave</problem>
+    <style>.onbutton {background-color:deepskyblue;}</style>
+<div class="imageright" style="max-width:200px;display:inline-block;float:right;border:1px solid">
+    <div id="phasemotion" style="width:200px;height:200px"></div>
+    <div style="text-align:center">
+        <button id="left" onclick="phasemotion.start(1);">&larr;</button>
+        <button id="stopsign" onclick="phasemotion.start(0);">stop</button>
+        <button id="right" onclick="phasemotion.start(-1);">&rarr;</button></div>
+    <p style="text-align:center">The phase at a particular spot changes as the wave moves.</p>
+</div>
+If the wave starts to move to the right (in the positive <i>x</i> direction), notice how the phase at any one particular location <i>decreases</i>.  If we wait a time \(T\), the phase will decrease by \(2\pi\), and in general the phase changes by \(-2\pi(t/T)\).  However, if the wave is moving to the left, the phase increases at the same rate.  Thus we can write the phase as
+$$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi {t\over T} \quad \hbox{wave moving in the $\pm x$ direction}$$
+This formula assumes that the phase at \(x=0,\,t=0\) is zero.  In practice, if the initial phase is \(\phi_0\), then
+$$\boxed{\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi {t\over T}+\phi_0}$$</div>
+making the general formula for the displacement
+$$y(x,t)=A\cos\left(2\pi{x\over\lambda}\mp 2\pi{t\over T}+\phi_0\right)$$
+</p>
+<problem>Calculate phase of a randomly chosen wave</problem>
 There are several other forms we can write the phase in.  It is common to replace the period with the frequency:
-    $$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi ft+\phi_0$$
-    We can also fold the initial phase (which is just a constant) into the frequency term, writing
+$$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi ft+\phi_0$$
+We can also fold the initial phase (which is just a constant) into the frequency term, writing
 $$\phi(x,t)=2\pi{x\over\lambda}\mp 2\pi f(t-t_0)$$
 where \(t_0\) is a time where the displacement at \(x=0\) is at its maximum positive value, so that \phi(0,t_0)=0.
 <ul class="checklist">
-<li class="simple">What is the relationship between \(\phi_0\) and \(t_0\)?  Calculate it, check with your neighbor, and then press the reveal button to see if you're right.
-<br><button class="reveal">Reveal</button>
-<div class="reveal">$$\phi_0=\pm 2\pi f t_0$$</div>
+    <li class="simple">What is the relationship between \(\phi_0\) and \(t_0\)?  Calculate it, check with your neighbor, and then press the reveal button to see if you're right.
+        <br><button class="reveal">Reveal</button>
+        <div class="reveal">$$\phi_0=\pm 2\pi f t_0$$</div>
 </ul>
 <h2>Angular frequency and wavenumber</h2>
 <p>There are two other measures of waves you may be less familiar with.
-<UL>
-<!--TODO: Animation of angular frequency: wave takes 1s to travel π radians-->
-<!--TODO: Figure showing of wavenumber-->
-    <demo>demonstration of angular frequency</demo>
-<LI>The <B>angular frequency</B> <I>&omega;=2&pi;f</I> of a wave is the number of radians that pass by a certain spot per unit of time.
-<LI><B>Wavenumber</B> <I>k=2&pi;/&lambda;</I> is the number of radians that fit within a given amount of distance.  It is the spatial version of the angular frequency: a higher wavenumber means more waves can fit into 
-</UL>
-These variables allow us to write the phase in a more compact form.
-<ul class="checklist">
-    <li><problem>Calculate the angular frequency and wavenumber of a given wave.</problem></li>
-    <li><problem>Find the relationship between wavenumber, angular frequency, and wave speed.</problem></li>
-<li class="simple">
-Rewrite the phase \(\phi(x,t)\) in terms of \(k\) and \(\omega\), check with your partner, and then press Reveal.
-<button class="reveal">Reveal</button>
-<div class="reveal">$$\phi(x,t)=kx\mp\omega t+\phi_0$$</div>
-We have been changing the sign of the time term to indicate the direction of the wave's motion, but one can also change the sign of the position term.  In fact, we will fold the sign into the wavenumber itself, using positive <i>k</i> for waves that move to the right, and negative <i>k</i> for waves that move to the left.  With that convention, the phase can be written as
-$$\phi(x,t)=kx-\omega t+\phi_0$$
-</p>
-</ul>
+    <UL>
+        <!--TODO: Animation of angular frequency: wave takes 1s to travel π radians-->
+        <!--PICTURE: Figure showing wavenumber-->
+        <demo>demonstration of angular frequency</demo>
+        <LI>The <B>angular frequency</B> <I>&omega;=2&pi;f</I> of a wave is the number of radians that pass by a certain spot per unit of time.
+            <LI><B>Wavenumber</B> <I>k=2&pi;/&lambda;</I> is the number of radians that fit within a given amount of distance.  It is the spatial version of the angular frequency: a higher wavenumber means more waves can fit into 
+                </UL>
+            These variables allow us to write the phase in a more compact form.
+            <ul class="checklist">
+                <li><problem>Calculate the angular frequency and wavenumber of a given wave.</problem></li>
+                <li><problem>Find the relationship between wavenumber, angular frequency, and wave speed.</problem></li>
+                <li class="simple">
+                    Rewrite the phase \(\phi(x,t)\) in terms of \(k\) and \(\omega\), check with your partner, and then press Reveal.
+                    <button class="reveal">Reveal</button>
+                    <div class="reveal">$$\phi(x,t)=kx\mp\omega t+\phi_0$$</div>
+                    We have been changing the sign of the time term to indicate the direction of the wave's motion, but one can also change the sign of the position term.  In fact, we will fold the sign into the wavenumber itself, using positive <i>k</i> for waves that move to the right, and negative <i>k</i> for waves that move to the left.  With that convention, the phase can be written as
+                    $$\phi(x,t)=kx-\omega t+\phi_0$$
+                </p>
+            </ul>
 

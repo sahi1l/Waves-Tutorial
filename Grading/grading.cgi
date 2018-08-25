@@ -129,4 +129,4 @@ print("Content-type:text/plain\n")
 print(toprint)
     
 #TODO: Randomized problems need to have their own entry, maybe in input.  They need to be able to check if they have been completed; if so, they take on the value in input.  If not, they give a new randomized set of variables.
-        
+

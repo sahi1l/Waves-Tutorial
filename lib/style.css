@@ -24,12 +24,10 @@ input {
 }
 
 ul.checklist li:before {
-//             content:"\2610";
              content:url("../img/checkoff.png");
              margin-right:5px;
 }
 ul.checklist li.done:before {
-//             content:"\2611";
                content:url("../img/checkon.png");
              margin-right:5px;
              } 
@@ -87,6 +85,7 @@ problem {
     padding:5px;
     left:0px;
     top:0px;
+    height:20px;
     background-color:darkblue;
     color:white;
     z-index:1;
@@ -103,3 +102,7 @@ problem {
 .complete {background-color:green !important;}
 body {margin-top:40px;}
 .label {font-size:50%;color:purple;}
+.rightimage {width:200px;float:right;font-family:serif;font-style:italic;text-align:center;}
+div.rightimage {border:1px solid;padding:4px;}
+div.rightimage>img {width:200px;}
+#course {position:absolute; left:50%;text-align:center;font-size:125%;font-variant:small-caps;color:#88f;}

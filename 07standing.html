@@ -5,8 +5,10 @@
 <script src="lib/jquery.js"></script>
 <script src="lib/math.js"></script>
 <script src="lib/plotly.min.js"></script>
+<script src="lib/raphael.js"></script>
 <script src="http://localhost/Waves/lib/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script src="js/general.js"></script>
+<script src="js/standing.js"></script>
 <!---------------------------------------------------------------------------------------------------->
 <h1>Standing Waves</h1><div id="chapter">7</div>
 <h2>Pulse Reflection at Boundaries</h2>
@@ -19,16 +21,21 @@
     </li>
     </ul>
 <h2>Waves at Boundaries</h2>
+    <!--TODO: Picture/animation: Two waves and two types of boundaries. Show original wave, reflected wave, and sum. I feel like this could be a general program that can be applied to all three below.-->
     <p><demo>A picture of two waves and two types of boundaries. Show the reflected and original waves plus the sum.</demo>
         One can go through the mathematics of adding the regular wave and its reflection at a boundary, but the net result is that a sinusoidal wave <b>must be zero at a hard boundary</b> and <b>must be maximal</b> at a soft boundary.</p>
+    <!--TODO: A picture of a wave that doesn't fit between barries, the reflections, and how they all cancel out-->
+    <div id="sines" style="background-color:antiquewhite; width:200;height:400"></div>
 <demo>A picture of a wave that doesn't fit between two barriers, the resulting reflected waves, and how they all cancel out</demo>
     <p>Now suppose a wave is trapped between <i>two hard barriers</i>.
     We know that the wave must be zero at both barriers, but for most waves this would be impossible.  If you try to get a wave going, the original and reflected waves become a jumble and end up just cancelling each other out.  However, if you choose a wave with just the right wavelength so that it fits in between the walls and can be zero at both ends, then the original and the reflections build upon each other, and you get a <i>standing wave</i>.
     </p>
+    <!--TODO: Interactive demo. Change boundary type and mode numbers. Show the two waves.-->
         <demo>Try different mode numbers and different boundaries, see the wave.</demo>
-    
+  <problem>Maybe using the demo here, find the wavenumbers where they don't all fall apart.</problem>  
     
 <h2>Standing Wave Modes</h2>
+    <!--WRITE: Mode, nodes, antinodes-->
 Mode, nodes and antinodes
 
 <demo>This program does animation and handles reflection too. Try different functions and/or wavelengths and see what happens</demo>

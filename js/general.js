@@ -1,6 +1,6 @@
 function lpr(data){console.log(data);CheckComplete();} //debug function
 function InsertHeader(){
-    $("body").prepend('<div id="header"><span id="name"></span> <div id="complete">Completed! <A HREF="index.html">Return to the scoreboard.</A></div></div>');
+    $("body").prepend('<div id="header"><span id="name"></span><span id="course">Physics 370</span> <div id="complete">Completed! <A HREF="index.html">Return to the scoreboard.</A></div></div>');
     $("#complete").hide();
 }
 var Header = function(data){
@@ -9,16 +9,19 @@ var Header = function(data){
     if(data=="Unknown"){
         $("#name").text("I don't recognize your code.");
     } else {
-        $("#name").text(data);
+        $("#name").text("Logged in as "+data);
     }
 }
-var GradeCommand = function(input, process) {
-    $.ajax({
+var DefaultFailure=function(x,txt,b){console.log("Error:",b);}
+var GradeCommand = function(input, process,failure) {
+        if(failure==undefined){failure=DefaultFailure;}
+        $.ajax({
         url:"Grading/grading.cgi",
         dataType:"text",
         method:"POST",
         data:input
-        }).done(process).fail(function(x,txt,b){console.log("Error:",b);});
+        }).done(process).fail(failure);
+    
 };
 var CheckComplete = function(chapter) {
     if(chapter==undefined){
@@ -29,7 +32,6 @@ var CheckComplete = function(chapter) {
 };
 
 var isComplete = function(result){
-    console.log("isComplete",result.trim())
     if(result.trim()=="True"){
         $("#complete").show();
         $("#header").addClass("complete");
@@ -41,8 +43,6 @@ var isComplete = function(result){
 
 GradeInit=function(data){
     //This is the process function for the command init
-    console.log("GradeInit begins")
-    console.log(JSON.stringify(data));
     if(data.trim()!=""){
     var D=data.trim().split("\n")
     D.forEach(function(element){
@@ -54,7 +54,6 @@ GradeInit=function(data){
         }
     });
     }
-    console.log("OK checking now");
     if(typeof(SetUpRandom) !== "undefined"){SetUpRandom();} //This function sets up any random-seeded commands.
 }
 var getchapter=function(){return $("#chapter").text();}
@@ -70,7 +69,6 @@ var answerkey=function(event){
     }
 }
 var answercheck=function(id){
-    console.log("answercheck");
     var widget=$("input#"+id);
     var val=widget.val()
     if (!(id in checking)){widget.addClass("missing");}
@@ -111,11 +109,8 @@ function toggleCheck(w,val){
     }
 }
 function addQuery(){
-    console.log($("a"))
     $("a").each(function(idx,element){
-        console.log(element);
         var href=element.href;
-        console.log(href);
         if(href.indexOf("?")<0){
             element.href=href+"?"+getcode()
         }
@@ -141,9 +136,8 @@ function generalinit(){
     $("input.answer.short").attr("placeholder","Answer");
     $("input.answer").keyup(answerkey);
     $("#complete").hide()
-    GradeCommand({command:"name",code:getcode()},Header);
+    GradeCommand({command:"name",code:getcode()},Header,function(){Header("Unknown");});
     addQuery();
-   console.log("Initing"); 
     GradeCommand({command:"init",code:getcode(),chapter:getchapter()},GradeInit);
     CheckComplete();
     //MAYBE: Possibly call init after this?
